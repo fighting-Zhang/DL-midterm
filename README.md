@@ -1,26 +1,25 @@
-# DL_hw1
-神经网络和深度学习课程作业1：从零开始构建三层神经网络分类器，实现图像分类
+# DL_midterm_task2
+神经网络和深度学习期中作业任务2：
+在VOC数据集上训练并测试目标检测模型Faster R-CNN和YOLO V3
 
-1. 训练代码：`train.py`
-
-    在代码中指定输出目录：`results_dir`和超参数字典`hyperparams`，运行后最优模型参数存储在`best_model_params.npz`，超参数字典存储在`hyperparams.json`。
-
-    首次运行时，会下载Fashion-MNIST数据集到目录`./fashion-mnist`下。
-
-2. 超参数网格搜索：`grid_search.py`
-
-    可以尝试不同的超参数：初始学习率`initial_lrs`、学习率下降策略（下降方式、衰减系数等）`lr_strategy`、隐藏层大小`hidden_sizes`、L2正则化强度`l2_regs`，对训练结果的影响。
+基本要求：
+（1） 学习使用现成的目标检测框架——如mmdetection或detectron2——在VOC数据集上训练并测试目标检测模型Faster R-CNN和YOLO V3；
+（2） 挑选4张测试集中的图像，通过可视化对比训练好的Faster R-CNN第一阶段产生的proposal box和最终的预测结果。
+（3） 搜集三张不在VOC数据集内包含有VOC中类别物体的图像，分别可视化并比较两个在VOC数据集上训练好的模型在这三张图片上的检测结果（展示bounding box、类别标签和得分）；
 
 
-3. 测试代码：`test.py`
+本实验利用目标检测框架mmdetection在VOC数据集上训练并测试目标检测模型Faster R-CNN和YOLO V3。
 
-    在代码中指定测试目录：`results_dir`，加载该目录下保存的最优模型参数`best_model_params.npz`，和对应的模型结构超参数`hyperparams.json`。输出模型在测试集上的分类准确率(accuracy)。
+1. `config/`
 
-4. 模型网络参数可视化：`visual.py`
+    该目录下有适应mmdetection v3.3版本的训练config文件。安装好mmdetection后，运行`python tools/train.py configs/faster-rcnn_r50_fpn_1x_voc0712.py`即可完成训练和测试.
 
-    可视化隐藏层和输出层的模型权重：W1(hidden_sizes x 784)、W2(10 x hidden_sizes)。
+2. `test_image/`
 
-    W1可视化为 `hidden_sizes` 张大小为28 x 28的图像；
-    W2可视化为 10 张包含 `hidden_size` 个一维向量的图像。
+    该目录下有VOC07test中4个样本和搜寻的不在VOC数据集中的4张图片，可以用来测试两种算法的检测效果。
 
-5. 最优超参数组合和模型权重保存在：<a href="https://drive.google.com/drive/folders/1k04avH0DxMwTPwdTJ01kzwf-y_qR-5NM?usp=sharing">google drive</a>
+3. `vis.ipynb`
+
+    可以利用相关代码块可视化对比训练好的Faster R-CNN第一阶段产生的proposal box和最终的预测结果、对比Faster R-CNN和YOLOv3的预测结果。
+
+4. 相关模型权重保存在：<a href="https://drive.google.com/drive/folders/1k04avH0DxMwTPwdTJ01kzwf-y_qR-5NM?usp=sharing">google drive</a>
