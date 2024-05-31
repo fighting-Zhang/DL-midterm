@@ -22,4 +22,4 @@
 
     可以利用相关代码块可视化对比训练好的Faster R-CNN第一阶段产生的proposal box和最终的预测结果、对比Faster R-CNN和YOLOv3的预测结果。
 
-4. 相关模型权重保存在：<a href="https://drive.google.com/drive/folders/1k04avH0DxMwTPwdTJ01kzwf-y_qR-5NM?usp=sharing">google drive</a>
+4. 相关模型权重保存在：<a href="https://drive.google.com/drive/folders/16UlK6v13bD3zRXF0B4corOPPmYpAXXqj?usp=sharing">google drive</a>
